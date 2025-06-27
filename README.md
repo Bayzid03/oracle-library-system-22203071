@@ -1,87 +1,210 @@
-University Library Management System
-Database Final Assignment – MySQL/Oracle Edition
+# 📚 University Library Management System
 
-📋 Project Overview
-This project delivers a fully functional University Library Management System, built for the final assignment of a database course. It includes database design, SQL queries, PL/SQL programming, and administrative tasks, all deployed on Oracle Database (MySQL-compatible queries included).
+**🎓 Final Assignment — Database (MySQL/Oracle/SQL Server) Course**
 
-🎯 Core Objectives
-Design and normalize a relational schema for a university library
+A complete database solution for managing a university library, built using **Oracle Database**, integrating advanced SQL and PL/SQL programming concepts.
 
-Implement sample data and ensure referential integrity
+---
 
-Develop a range of SQL queries from basic to analytical
+## 📌 Project Overview
 
-Automate logic using stored procedures, functions, and triggers
+This system demonstrates the design and implementation of a fully functional **University Library Management System**, focusing on data modeling, querying, procedural logic, and database administration.
 
-Apply indexing, performance optimization, and user-level access control
+---
 
-🎓 Completed Deliverables
-📦 Part 1: Database Design & Seeding
-Defined relational schema: BOOKS, MEMBERS, TRANSACTIONS
+## 🎯 Objectives
 
-Enforced constraints: primary keys, unique keys, foreign keys
+* ✅ Design normalized relational databases for real-world systems
+* ✅ Implement efficient and secure SQL-based solutions
+* ✅ Develop PL/SQL-based procedures, functions, and triggers
+* ✅ Apply administrative techniques for performance and user management
 
-Populated with:
+---
 
-20 books from diverse categories
+## 🧠 Learning Outcomes
 
-15 verified member records
+| Area                | Skills Demonstrated                                |
+| ------------------- | -------------------------------------------------- |
+| **Database Design** | ER modeling, normalization (1NF to 3NF)            |
+| **SQL Mastery**     | DDL, DML, DCL, TCL operations                      |
+| **PL/SQL Logic**    | Business logic via procedures, functions, triggers |
+| **Administration**  | Roles, privileges, indexing, performance tuning    |
 
-25+ transactions with various statuses and fines
+---
 
-🔎 Part 2: Querying & Manipulation
-Book availability lookup using comparison conditions
+## ✅ Completed Assignment Parts
 
-Fines calculated dynamically using DATEDIFF()
+| Part       | Description                              | Status      |
+| ---------- | ---------------------------------------- | ----------- |
+| **Part 1** | Database Design & Sample Data (15 marks) | ✅ Completed |
+| **Part 2** | Basic SQL Operations (20 marks)          | ✅ Completed |
+| **Part 3** | Advanced SQL Queries (25 marks)          | ✅ Completed |
+| **Part 4** | PL/SQL Programming (25 marks)            | ✅ Completed |
+| **Part 5** | User Management & Performance (15 marks) | ✅ Completed |
 
-Insert-new-member logic with duplication prevention
+---
 
-Archiving logic for old transactions using date filtering
+## 🛠️ Technologies Used
 
-Category assignments based on publication year ranges
+| Component       | Tool                            |
+| --------------- | ------------------------------- |
+| **Database**    | Oracle DB                       |
+| **Languages**   | SQL, PL/SQL                     |
+| **Admin Tools** | Oracle SQL Developer, SQL\*Plus |
 
-🔁 Part 3: Joins & Advanced Queries
-INNER JOIN → All overdue transaction details
+---
 
-LEFT JOIN → Books with and without borrow history
+## 🌟 Key Features
 
-SELF JOIN → Members borrowing from same category as others
+### 📖 Book Management
 
-CROSS JOIN → Member-book pairs for recommendation engine
+* Track books by title, author, category, and ISBN
+* Monitor available vs. total copies
+* Inventory and category-based classification
 
-Subqueries →
+### 👥 Member Management
 
-Above-average borrowing analysis
+* Multi-type support: students, faculty, staff
+* Membership status & contact management
 
-Fine totals by membership type
+### 🔄 Transaction Handling
 
-Books in most borrowed category
+* Borrow/return tracking with date validation
+* Fine calculation based on overdue duration
+* Real-time status updates
 
-Second most active borrower detection
+### 📊 Advanced SQL Analytics
 
-📊 Part 4: Analytical Insights
-Running monthly fines using SUM() OVER (...)
+* Available books check
+* Overdue and top-borrowed analysis
+* Join operations, subqueries, window functions
 
-RANK() analysis by membership type
+### ⚙️ Automation with PL/SQL
 
-Category-level borrowing contribution using percentage ratios
+* **ISSUE\_BOOK** procedure with validation
+* **CALCULATE\_FINE** function for delayed returns
+* **UPDATE\_AVAILABLE\_COPIES** trigger on returns
 
-🛠️ Part 5: PL/SQL Logic & Automation
-✅ ISSUE_BOOK() stored procedure with locking and validations
+### 🔐 Role-Based Access & Performance
 
-✅ CALCULATE_FINE() function returning fine by delay in days
+* **librarian**: full access
+* **student\_user**: limited read access
+* Indexing and query optimization for speed
 
-✅ AFTER UPDATE trigger to maintain book inventory after return
+---
 
-🔐 Part 6: Security & Performance
-Created users: librarian, student_user
+## 📂 Project Structure
 
-Privileges:
+```
+oracle-library-system-[student-id]/
+│
+├── README.md            # 📄 Project documentation
+└── sql/
+    ├── setup.sql        # 🏗️ Schema + Sample Data
+    ├── queries.sql      # 🔍 SQL Queries (Basic + Advanced)
+    ├── plsql.sql        # ⚙️ Procedures, Functions, Triggers
+    └── admin.sql        # 🛡️ Roles & Indexing
+```
 
-librarian: ALL PRIVILEGES
+---
 
-student_user: SELECT on BOOKS only
+## 📄 File Descriptions
 
-Indexed author, title, member_id, and book_id columns
+### `setup.sql`
 
-Verified query plans using EXPLAIN statements
+* Table definitions (BOOKS, MEMBERS, TRANSACTIONS)
+* Constraints (PK, FK, checks)
+* Sample data (20 books, 15 members, 25 transactions)
+
+### `queries.sql`
+
+* Retrievals: available books, overdue members, etc.
+* Joins: INNER, LEFT, SELF, CROSS
+* Subqueries, aggregates, window functions
+
+### `plsql.sql`
+
+* `ISSUE_BOOK` procedure
+* `CALCULATE_FINE` function
+* `UPDATE_AVAILABLE_COPIES` trigger
+
+### `admin.sql`
+
+* User and role creation
+* Privileges and security setup
+* Indexes for performance tuning
+
+---
+
+## 🚀 How to Execute
+
+1. **Connect to Oracle**
+
+   ```
+   sqlplus username/password@database
+   ```
+
+2. **Run the SQL files in order:**
+
+   ```sql
+   @sql/setup.sql      -- Create schema and insert sample data  
+   @sql/queries.sql    -- Run basic and advanced queries  
+   @sql/plsql.sql      -- Create procedures, triggers, functions  
+   @sql/admin.sql      -- Set roles, privileges, indexes  
+   ```
+
+---
+
+## 🧬 Database Schema
+
+### Tables:
+
+* **BOOKS**: Book details (book\_id, title, author, ISBN, copies, etc.)
+* **MEMBERS**: Member info (member\_id, name, contact, type, etc.)
+* **TRANSACTIONS**: Borrow/return logs with fine status
+
+---
+
+## ✅ Requirements Covered
+
+| Requirement            | Implemented |
+| ---------------------- | ----------- |
+| 📚 20 Books            | ✅           |
+| 👨‍🎓 15 Members       | ✅           |
+| 🔁 25 Transactions     | ✅           |
+| 📥 Overdue Queries     | ✅           |
+| 📈 Top Borrowed Stats  | ✅           |
+| ⚙️ PL/SQL Procedures   | ✅           |
+| 🧾 Fine Calculation    | ✅           |
+| 🔐 User Access Control | ✅           |
+| ⚡ Performance Indexing | ✅           |
+
+---
+
+## 📌 PL/SQL Components
+
+* `ISSUE_BOOK (member_id, book_id)`
+  → Validates and processes a new borrowing request
+
+* `CALCULATE_FINE (transaction_id)`
+  → Returns fine based on overdue days (₹5/day)
+
+* `UPDATE_AVAILABLE_COPIES` trigger
+  → Updates `available_copies` automatically on returns
+
+---
+
+## 👥 User Roles
+
+| Role              | Access Level                    |
+| ----------------- | ------------------------------- |
+| **librarian**     | Full access to all operations   |
+| **student\_user** | Read-only access to BOOKS table |
+
+---
+
+## 📬 Final Notes
+
+This project represents a real-world simulation of managing a university library system, using Oracle DB tools and best practices in SQL and PL/SQL. It covers the full lifecycle from schema design to analytics and automation.
+
+---
